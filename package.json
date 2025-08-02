@@ -1,6 +1,6 @@
 {
   "name": "pumpdotfun-sdk-forked",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "A simple SDK for interacting with pumpdotfun",
   "type": "module",
   "module": "./dist/esm/index.mjs",

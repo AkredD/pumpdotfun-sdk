@@ -368,7 +368,7 @@ export class PumpFunSDK {
     if (!tokenAccount) {
       return null;
     }
-    return BondingCurveAccount.fromBuffer(tokenAccount!.data);
+    return BondingCurveAccount.fromBuffer(tokenAccount!.data as Buffer);
   }
 
   async getGlobalAccount(commitment: Commitment = DEFAULT_COMMITMENT) {
@@ -377,12 +377,12 @@ export class PumpFunSDK {
       new PublicKey(PROGRAM_ID)
     );
 
-    const tokenAccount = await this.connection.getAccountInfo(
+    const tokenAccount = (await this.connection.getAccountInfo(
       globalAccountPDA,
       commitment
-    );
+    ))!!;
 
-    return GlobalAccount.fromBuffer(tokenAccount!.data);
+    return GlobalAccount.fromBuffer(tokenAccount.data as Buffer);
   }
 
   getBondingCurvePDA(mint: PublicKey) {
